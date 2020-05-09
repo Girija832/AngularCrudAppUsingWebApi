@@ -1,0 +1,66 @@
+.login-form {
+    width: 360px;
+    margin: 80px auto;
+    .mat-card {
+        padding: 0;
+        border-radius: 4px;
+    }
+    form {
+        padding: 20px;
+    }
+    h5 {
+        background-color: #33b5e5;
+        border-radius: 4px 4px 0 0;
+        padding: 20px 0;
+        color: #fff;
+    }
+    p {
+        margin-top: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+.custom-btn {
+    padding: 5px;
+    border-radius: 30px;
+    border-color: #33b5e5;
+    color: #33b5e5;
+    margin: 20px auto;
+}
+.btn-row a {
+    margin-right: 14px;
+}
+
+.btn-row a:hover {
+    i {
+        color: #fff;
+    }
+}
+.social-icon {
+    color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    box-shadow: 0 5px 10px 0 #b9b5b5;
+    i {
+        vertical-align: bottom;
+        font-size: 15px;
+    }
+}
+.fb-bg {
+    background: #3b5998;
+}
+.twitter-bg {
+    background: #55acee;
+}
+.linked-in-bg {
+    background: #0082ca;
+}
+.github-bg {
+    background: #333333;
+}

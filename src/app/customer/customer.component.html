@@ -1,0 +1,72 @@
+<div class="container">
+    <h1 class="container-heading">List of Customers</h1>
+    <div class="table-content">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 table-heading">
+                    <h2>Manage Customers</h2>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="action-btn">
+                        <button mat-raised-button color="warn" (click)="delete()">
+                            <mat-icon>remove_circle</mat-icon>Delete
+                        </button>
+                        <button mat-raised-button color="primary" (click)="addCustomer()">
+                            <mat-icon>add_circle</mat-icon>Add New Employee
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-card>
+            <div class="table table-responsive myCustomClass">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <mat-checkbox color="primary" [checked]="isChecked()" [indeterminate]="isIndeterminate()" 
+                                    (change)="$event ? toggleAll($event) : null">        
+                                </mat-checkbox>
+                            </th>
+                            <th class="test col col-md-auto col-sm-6"> Details</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col" class="col col-md-auto actionMenu col-sm-6">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customerList; let i = index;">
+                            <td>
+                                <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                                (change)="$event ? toggle(customer, $event) : null"
+                                [checked]="exists(customer)">
+                                </mat-checkbox>
+                            </td>
+                            <td class="test col col-md-auto col-sm-6">
+                                <b>Name:</b> {{customer.name}} <br>
+                                <b>Email:</b> {{customer.email}} <br>
+                                <b>Address:</b> {{customer.address}} <br>
+                                <b>Phone:</b> {{customer.phone}} <br>
+                            </td>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.email}}</td>
+                            <td>{{customer.address}}</td>
+                            <td>{{customer.phone}}</td>
+                            <td class="actionMenu col col-md-auto col-sm-6">
+                                <button mat-icon-button color="primary" 
+                                (click)="edit(i,customer.id,customer.name,customer.email,customer.address,customer.phone)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn" (click)="delete()">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-card>
+    </div>
+</div>

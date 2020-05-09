@@ -1,0 +1,53 @@
+<div class="registration-form">
+  <mat-card>
+      <h5 class="text-center">Sign up</h5>
+      <form>
+          <div class="example-container">
+              <mat-form-field appearance="legacy">
+                  <mat-label>First Name</mat-label>
+                  <input matInput>
+              </mat-form-field>
+              <mat-form-field appearance="legacy" class="float-right">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput>
+              </mat-form-field>
+          </div>
+          <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput>
+          </mat-form-field>
+          <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput>
+          </mat-form-field>
+          <p class="hint-font">At least 8 characters and 1 digit</p>
+          <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input type="text" matInput>
+          </mat-form-field>
+          <p class="hint-font">Optional - for two-step authentication</p>
+          <div class="text-center">
+              <mat-checkbox color="primary">Subscribe to our newsletter</mat-checkbox>
+          </div>
+          <button mat-stroked-button color="primary" class="custom-btn full-width" [routerLink]="['/customer']">SIGN
+              UP</button>
+          <p class="text-center">or sign up with:</p>
+          <div class="text-center btn-row">
+              <a type="button" class="btn-floating social-icon fb-bg">
+                  <i class="fa fa-facebook"></i>
+              </a>
+              <a type="button" class="btn-floating social-icon twitter-bg">
+                  <i class="fa fa-twitter"></i>
+              </a>
+              <a type="button" class="btn-floating social-icon linked-in-bg">
+                  <i class="fa fa-linkedin"></i>
+              </a>
+              <a type="button" class="btn-floating social-icon github-bg">
+                  <i class="fa fa-github"></i>
+              </a>
+          </div>
+          <mat-divider></mat-divider>
+          <p class="text-center">By clicking Sign up you agree to our <a href="#">terms of service.</a></p>
+      </form>
+  </mat-card>
+</div>

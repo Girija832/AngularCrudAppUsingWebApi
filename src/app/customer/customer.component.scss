@@ -1,0 +1,80 @@
+.container-heading {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+.table-title {
+    background: #435d7d;
+    color: #fff;
+    padding: 8px 20px;
+
+    h2 {
+        margin-bottom: 0;
+    }
+}
+
+.action-btn {
+    float: right;
+
+    button {
+        margin-right: 8px;
+    }
+    .material-icons {
+        margin-right: 4px;
+    }
+}
+th.test, td.test {
+    display: none;
+}
+
+
+
+@media (max-width: 991px) {
+    .myCustomClass th, .myCustomClass td {
+        display: none;
+    }
+    .myCustomClass th.test, .myCustomClass td.test {
+        display: table-cell;
+    }
+
+    .myCustomClass th.actionMenu, .myCustomClass td.actionMenu {
+        display: table-cell;
+    }
+}
+
+@media (min-width: 992px) {
+    .myCustomClass th.actionMenu, .myCustomClass td.actionMenu {
+        display: table-cell;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-heading {
+        margin: 20px auto;
+        font-size: 30px;
+    }
+    .action-btn {
+        float: none;
+    }
+    .table-heading h2 {
+        font-size: 26px;
+        margin-bottom: 5px;
+    }
+    .myCustomClass td {
+        font-size: 14px;
+    }
+    .myCustomClass th.actionMenu, .myCustomClass td.actionMenu {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .table thead th {
+        border-bottom: none;
+    }
+}
+@media (min-width: 767px) {
+    .table-heading h2 {
+        font-size: 26px;
+        margin-bottom: 5px;
+    }
+}
