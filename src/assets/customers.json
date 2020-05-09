@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Thomas Hardy",
+        "email": "thomashardy@mail.com",
+        "address": "89 Chiaroscuro Rd, Portland, USA",
+        "phone": "(171) 555-2222"
+    },
+    {
+        "id": 1,
+        "name": "Dominique Perrier",
+        "email": "dominiqueperrier@mail.com",
+        "address": "Obere Str. 57, Berlin, Germany",
+        "phone": "(313) 555-5735"
+    },
+    {
+        "id": 3,
+        "name": "Maria Anders",
+        "email": "mariaanders@mail.com",
+        "address": "25, rue Lauriston, Paris, France",
+        "phone": "(503) 555-9931"
+    }
+]
