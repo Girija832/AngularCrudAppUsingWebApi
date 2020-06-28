@@ -5,8 +5,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 // import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Customer } from 'src/app/shared/customer.model';
-import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from '../../shared/customer.model';
+import { CustomerService } from '../../services/customer.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('AddNewComponent', () => {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
-import { CustomerService } from 'src/app/services/customer.service';
-import { Customer } from 'src/app/shared/customer.model';
+import { CustomerService } from '../../services/customer.service';
+import { Customer } from '../../shared/customer.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerService } from '../services/customer.service';
-import { Customer } from '../shared/CustomerModel';
+import { Customer } from '../shared/customer.model';
 import { AddNewComponent } from '../dialogs/add-new/add-new.component';
 import { DeleteComponent } from '../dialogs/delete/delete.component';
 import { MatCheckboxChange } from '@angular/material/checkbox';

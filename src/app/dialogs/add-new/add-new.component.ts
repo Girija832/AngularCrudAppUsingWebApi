@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Customer } from 'src/app/shared/customer.model';
+import { Customer } from '../../shared/customer.model';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-add-new',
