@@ -1,20 +1,44 @@
-<h2 mat-dialog-title>Add New Customer</h2>
+<h2 mat-dialog-title>{{edit ? 'Update':'Add New'}} Customer</h2>
 <mat-dialog-content>
     <div>
-        <form class="add-form"  #formControl="ngForm">
-            <label for="name">Name</label>
-            <input type="text" id="name" [(ngModel)]="data.name" class="form-control" name="name">
-            <label for="email">Email</label>
-            <input type="text" id="email" [(ngModel)]="data.email" class="form-control" name="email">
+        <form [formGroup]="customerForm"   class="add-form" >
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="customerForm.controls['name'].errors?.required">Name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-error *ngIf="customerForm.controls['email'].errors?.required">Email required</mat-error>
+                <mat-error *ngIf="customerForm.controls['email'].errors?.email">Invalid email</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address">
+                <mat-error *ngIf="customerForm.controls['address'].errors?.required">Address required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone">
+                <mat-error *ngIf="customerForm.controls['phone'].errors?.required">Phone number required</mat-error>
+                <mat-error *ngIf="customerForm.controls['phone'].errors?.pattern">Invalid phone number</mat-error>
+            </mat-form-field>
+            <!-- <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control">
+            <div *ngIf="customerForm.controls['name'].errors?.required">Name is required</div> -->
+            <!-- <label for="email">Email</label>
+            <input type="text" id="email" formControlName="email" class="form-control">
+            <div *ngIf="customerForm.controls['email'].errors?.required">Email is required</div>
             <label for="address">Address</label>
-            <input type="text" id="address" [(ngModel)]="data.address" class="form-control" name="address">
+            <input type="text" id="address" formControlName="address" class="form-control">
             <label for="phone">Phone</label>
-            <input type="text" id="phone" [(ngModel)]="data.phone" class="form-control" name="phone">
+            <input type="text" id="phone" formControlName="phone" class="form-control"> -->
         </form>
     </div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
     <button mat-button mat-flat-button mat-dialog-close>Cancel</button>
-    <button mat-button mat-flat-button color="primary" [mat-dialog-close]="true">Add</button>
+    <button mat-button mat-flat-button color="primary" [mat-dialog-close]="true" (click)="save()">{{edit ? 'Save':'Add'}}</button>
 </mat-dialog-actions>

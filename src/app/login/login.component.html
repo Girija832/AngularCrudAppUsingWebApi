@@ -1,37 +1,28 @@
 <div class="login-form">
-  <mat-card>
-      <h5 class="text-center">Sign in</h5>
-      <form>
-          <mat-form-field appearance="legacy" class="full-width">
-              <mat-label>Email</mat-label>
-              <input matInput>
-          </mat-form-field>
-          <mat-form-field appearance="legacy" class="full-width">
-              <mat-label>Password</mat-label>
-              <input type="password" matInput>
-          </mat-form-field>
-          <div class="text-center">
-              <mat-checkbox color="primary">Remember me</mat-checkbox>
-              <a href="#" class="float-right">Forgot Password?</a>
-          </div>
-          <button mat-stroked-button color="primary" class="custom-btn full-width" [routerLink]="['/customer']">SIGN
-              IN</button>
-          <p class="text-center">Not a member? <a [routerLink]="['/register']">Register</a></p>
-          <p class="text-center">or sign in with:</p>
-          <div class="text-center btn-row">
-              <a type="button" class="btn-floating social-icon fb-bg">
-                  <i class="fa fa-facebook"></i>
-              </a>
-              <a type="button" class="btn-floating social-icon twitter-bg">
-                  <i class="fa fa-twitter"></i>
-              </a>
-              <a type="button" class="btn-floating social-icon linked-in-bg">
-                  <i class="fa fa-linkedin"></i>
-              </a>
-              <a type="button" class="btn-floating social-icon github-bg">
-                  <i class="fa fa-github"></i>
-              </a>
-          </div>
-      </form>
-  </mat-card>
+    <mat-card>
+        <h5 class="text-center">Sign in</h5>
+        <form [formGroup] = "loginForm" (ngSubmit) = "loginUser()">
+            <mat-form-field appearance="legacy" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email required</mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].errors?.email">Invalid Email</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" class="full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="loginForm.controls['password'].errors?.required">Password required</mat-error>
+            </mat-form-field>
+            <div class="text-center">
+                <mat-checkbox color="primary">Remember me</mat-checkbox>
+                <a href="#" class="float-right">Forgot Password?</a>
+            </div>
+            <div *ngIf="isLoginError">
+                <p class="error-text text-center">{{errMessage}}</p>
+            </div>
+            <button type="submit" mat-stroked-button color="primary" class="custom-btn full-width" [disabled] = "!loginForm.valid" >SIGN
+                IN</button>    
+            <p class="text-center">Not a member? <a [routerLink]="['/register']">Register</a></p>
+        </form>
+    </mat-card>
 </div>

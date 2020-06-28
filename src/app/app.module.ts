@@ -8,10 +8,11 @@ import { MaterialModule } from './shared/material.module';
 import { CustomerComponent } from './customer/customer.component';
 import { AddNewComponent } from './dialogs/add-new/add-new.component';
 import { DeleteComponent } from './dialogs/delete/delete.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthInterceptor } from './shared/authconfig.interceptor';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MaterialModule
   ],
@@ -35,7 +37,13 @@ import { RegisterComponent } from './register/register.component';
     AddNewComponent,
     DeleteComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

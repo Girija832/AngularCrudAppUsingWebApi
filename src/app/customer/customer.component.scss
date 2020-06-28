@@ -12,7 +12,13 @@
         margin-bottom: 0;
     }
 }
-
+.table th {
+    padding: 6px 2px;
+}
+table td {
+    padding: 2px 2px;
+    vertical-align: middle;
+}
 .action-btn {
     float: right;
 
@@ -26,7 +32,12 @@
 th.test, td.test {
     display: none;
 }
-
+.toolbar-title {
+    h1 {
+        margin: 0 auto;
+        font-size: 26px;
+    }
+}
 
 
 @media (max-width: 991px) {
@@ -71,10 +82,27 @@ th.test, td.test {
     .table thead th {
         border-bottom: none;
     }
+
+    .toolbar-title {
+        h1 {
+            margin: 0 auto;
+            font-size: 14px;
+        }
+        .mat-raised-button {
+            line-height: 28px;
+            padding: 0 10px;
+        }
+    }
 }
 @media (min-width: 767px) {
     .table-heading h2 {
         font-size: 26px;
         margin-bottom: 5px;
+    }
+
+    .toolbar-title {
+        h1 {
+            font-size: 20px;
+        }
     }
 }

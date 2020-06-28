@@ -1,51 +1,60 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Customer } from '../shared/CustomerModel';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Customer } from '../shared/customer.model';
+import { AppConstants } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  customers: Customer[] = [];
+  isError: boolean = false;
+  errorMessage: string = '';
+  localUrl: string = './assets/customers.json'
 
   constructor(private http: HttpClient) { }
-
-  dialogData: any;
-
-  baseUrl: string = 'http://127.0.0.1:3000/customer';
-
+  // GET METHOD
   getAllCustomer() {
-    return this.http.get<Customer[]>('./assets/customers.json');
+    // let header = new HttpHeaders().set(
+    //   'Authorization', localStorage.getItem('access-token')
+    // );
+    return this.http.get<Customer[]>(AppConstants.ENDPOINT_URL + 'customer').subscribe(res => {
+      this.customers = res;
+    });
   }
 
-  getCustomers() {
-    return this.http.get<Customer[]>(this.baseUrl);
-  }
-
-  getCustomerById(id: number) {
-    return this.http.get<Customer>(this.baseUrl + '/' + id);
-  }
-
+  // POST METHOD
   createCustomer(user: Customer) {
-    return this.http.post(this.baseUrl, user).subscribe(data => {
-      this.dialogData = user;
+    return this.http.post(AppConstants.ENDPOINT_URL + 'customer', user).subscribe(data => {
+      console.log(data);
+      this.getAllCustomer();
     },
     (err: HttpErrorResponse) => {
       console.log('Error==>', err)
     });
   }
 
-  updateCustomer(user: Customer) {
-    return this.http.put(this.baseUrl + '/' + user.id, user);
+  // UPDATE, PUT METHOD
+  updateCustomer(id: number, user: Customer) {
+    return this.http.put(AppConstants.ENDPOINT_URL + 'customer/' + id, user).subscribe(data => {
+      console.log('updated data', data);
+      this.getAllCustomer();
+    },
+    (err: HttpErrorResponse) => {
+      console.log('error==>', err.error.message);
+      this.isError = true;
+      this.errorMessage = err.error.message;
+    });
   }
 
+  // DELETE METHOD
   deleteCustomer(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id);
-  }
-
-  dataChange: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
-
-  getDialogData() {
-    return this.dialogData;
+    return this.http.delete(AppConstants.ENDPOINT_URL + 'customer/' + id).subscribe(data => {
+      console.log(data);
+      this.getAllCustomer();
+    },
+    (err: HttpErrorResponse) => {
+      console.log('Delete method error==>', err);
+    });
   }
 }

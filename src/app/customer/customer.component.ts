@@ -5,6 +5,7 @@ import { Customer } from '../shared/CustomerModel';
 import { AddNewComponent } from '../dialogs/add-new/add-new.component';
 import { DeleteComponent } from '../dialogs/delete/delete.component';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-customer',
@@ -14,7 +15,8 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 export class CustomerComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
-    private customerService: CustomerService) { }
+    private customerService: CustomerService,
+    private authService: AuthService) { }
 
   customerList: Customer[] = [];
   selected = [];
@@ -27,16 +29,15 @@ export class CustomerComponent implements OnInit {
   }
 
   getEmployees() {
-    this.customerService.getAllCustomer().subscribe(data => {
-      console.log('Data=>', data);
-      this.customerList = data;
-    })
+    this.customerService.getAllCustomer();
   }
 
-  addNew(customer? : any) {
+  addNew(customer = {}, edit = false) {
     const dialogRef = this.dialog.open(AddNewComponent, {
+      width: '320px',
       data: {
-        customer
+        customer,
+        edit
       }
     });
 
@@ -45,10 +46,17 @@ export class CustomerComponent implements OnInit {
     })
   }
 
-  delete() {
+  delete(customer) {
     const dialogRef = this.dialog.open(DeleteComponent, {
+      data: {
+        customer
+      }
 
-    })
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 
   addCustomer() {
@@ -59,23 +67,6 @@ export class CustomerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         this.customerService.dataChange.value.push(this.customerService.getDialogData());
-        // this.refreshTable();
-      }
-    });
-  }
-
-  edit(i: number, id: number, name: string, email: string, address: string, phone: string) {
-    this.id = id;
-    this.index = i;
-    console.log(this.index);
-    const dialogRef = this.dialog.open(AddNewComponent, {
-      data: {id: id, name: name, email: email, address: address, phone: phone}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        const foundIndex = this.customerService.dataChange.value.findIndex(x => x.id === this.id);
-        this.customerService.dataChange.value[foundIndex] = this.customerService.getDialogData();
         // this.refreshTable();
       }
     });
@@ -121,5 +112,8 @@ export class CustomerComponent implements OnInit {
   }
 }
 
+logout() {
+  this.authService.logout();
+}
 
 }

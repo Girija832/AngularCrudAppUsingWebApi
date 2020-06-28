@@ -36,32 +36,6 @@
     margin-right: 14px;
 }
 
-.btn-row a:hover {
-    i {
-        color: #fff;
-    }
-}
-.social-icon {
-    color: #fff;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    box-shadow: 0 5px 10px 0 #b9b5b5;
-    i {
-        vertical-align: bottom;
-        font-size: 15px;
-        padding: 10px;
-    }
-}
-.fb-bg {
-    background: #3b5998;
-}
-.twitter-bg {
-    background: #55acee;
-}
-.linked-in-bg {
-    background: #0082ca;
-}
-.github-bg {
-    background: #333333;
+button:focus {
+    outline: none;
 }
